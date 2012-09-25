@@ -1,0 +1,181 @@
+@import "compass"
+@import url(http://fonts.googleapis.com/css?family=Exo:400,800)
+
+@mixin doubleborder($side, $innerColor, $outerColor)
+	$shadow: "0 0 0"
+	border-#{$side}: 1px solid $innerColor
+	@if ($side == "top") 
+		$shadow: 0 -1px 0
+	@if ($side == "right") 
+		$shadow: 1px 0 0
+	@if ($side == "bottom") 
+		$shadow: 0 1px 0
+	@if ($side == "left") 
+		$shadow: -1px 0 0
+	-webkit-box-shadow: $shadow $outerColor
+	-moz-box-shadow: $shadow $outerColor
+	-o-box-shadow: $shadow $outerColor
+	box-shadow: $shadow $outerColor
+@mixin helveticaBold
+	font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif
+	font-weight: 600
+	font-stretch: normal
+
+@mixin helveticaMedium
+	font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif
+	font-weight: 500
+	font-stretch: normal
+
+@mixin helveticaRegular
+	font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif
+	font-weight: 400
+	font-stretch: normal
+
+a 
+	text-decoration: none
+body, html
+	background: white
+	margin: 0
+	padding: 0
+	height: 100%
+
+ul, ul ul 
+	margin: 0
+	padding: 0
+	list-style: none
+
+// $mainbgcolor1: rgb(114, 122, 134)
+// $mainbgcolor2: rgb(80, 88, 100)
+// $mainborderbottom: #33373d
+
+// $mainbgcolor1:  			rgb(230, 230, 230)
+// $mainbgcolor2: 				darken($mainbgcolor1, 15%)
+// $mainborderbottom: 		darken($mainbgcolor1, 100%)
+
+$mainbgcolor1:  			rgb(66, 66, 66)
+$mainbgcolor2: 				darken($mainbgcolor1, 15%)
+$mainborderbottom: 		darken($mainbgcolor1, 100%)
+
+
+
+$mainspanbg: #48515c
+$maincolor1hover: rgb(69, 199, 235)
+$maincolor2hover: rgb(38, 152, 219)
+$mainspanbghover: #2173a1
+
+
+
+$mainheight: 2.75em
+$subheight:  $mainheight*0.75
+// $subborderbottom: #efeff0
+$subborderbottom: darken($mainbgcolor1, 5%)
+
+*
+	+helveticaRegular
+
+#main-container
+	float: left
+	width: 85%
+	height: 100%
+	z-index: 2
+	margin: 0
+	padding: 0
+	+box-shadow(0px 15px 15px 0px rgba(0, 0, 0, 0.9))
+	+background(rgb(230,230,230))
+
+
+@mixin main-menu-positioning($height)
+	width: 100%
+	height: $height
+	line-height: $height
+	text-indent: $height
+	display: block
+	position: relative
+
+@mixin sub-menu-positioning($height)
+	width: 100%
+	height: $height
+	line-height: $height
+	text-indent: $height
+	display: block
+	position: relative	
+	
+#aside-container
+	float: left
+	width: 15%
+	height: 100%
+	font-size: 0.8125em
+	z-index: 1
+	+background(url("bg.png"))
+	ul.menu
+		width: 100%
+		height: auto
+		margin-top: 50px
+		> li
+			margin-bottom: 50px
+			> a
+				+main-menu-positioning($mainheight)
+				color: rgb(180,180,180)
+				+helveticaBold
+				text-shadow: 1px 0px 1px rgba(0,0,0,.35)
+				text-transform: uppercase
+				font-size: 1em
+		ul
+			> li
+				&:first-child a
+					+doubleborder('top', rgb(55,55,55), rgb(88,88,88))
+				> a
+					+sub-menu-positioning($subheight)
+					+helveticaMedium
+					color: rgb(200,200,200)
+					text-shadow: 1px 0px 1px rgba(0,0,0,.35)
+					text-transform: none
+					font-size: 0.95em
+					
+					span
+						+border-radius(.769em)
+						font-size: 0.857em
+						display: inline-block
+						position: absolute
+						right: 1em
+						top: 50%
+						background: #fff
+						border: 1px solid #d0d0d3
+						line-height: 1em
+						height: 1em
+						padding: .4em .7em
+						margin: -.9em 0 0 0 
+						color: #878d95
+						text-indent: 0
+						text-align: center
+						text-shadow: 0px 0px 0px rgba(255,255,255,.01)
+				&:hover a, &:hover a:before
+					+background(rgb(40,40,40))
+
+.button
+	display: inline-block
+	+border-radius(.5em)
+	+box-shadow(0 1px 2px rgba(0,0,0,.2))
+	+helveticaBold
+	height: 2.2em
+	line-height: 2.2em
+	outline: none
+	cursor: pointer
+	text-align: center
+	text-decoration: none
+	width: 100%
+	text-shadow: 0px 2px 2px rgba(0,0,0,.9)
+	&:hover
+		text-decoration: none
+	&:active
+		position: relative
+		top: 1px
+
+.grey
+	color: rgb(230,230,230)
+	+background-image(linear-gradient(rgb(81,84,89), rgb(63,65,69)))
+	border: solid 1px rgb(26,27,30)
+	&:hover
+		+background-image(linear-gradient(darken(rgb(81,84,89),3%), darken(rgb(63,65,69),3%)))
+	&:active
+		+background-image(linear-gradient(rgb(63,65,69), rgb(81,84,89)))

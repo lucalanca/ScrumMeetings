@@ -1,0 +1,4 @@
+<p><strong>Username: </strong><%= @user.get('username') %></p>
+<p><strong>Email: </strong><%= @user.get('email') %></p>
+<p><strong>Twitter: </strong><%= @user.get('twitter_uid') %></p>
+<p><strong>Facebook: </strong><%= @user.get('facebook_uid') %></p>

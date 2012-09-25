@@ -1,0 +1,23 @@
+<ul class="menu">
+	<li><a href="#">Projects</a>
+		<ul>
+			<% for project in @projects.models: %>
+				<li><a href="#" class="project" data-id="<%= project.get('id') %>"><%= project.get('name') %> <span>12</span></a></li>
+			<% end %>
+		</ul>
+		<div style="padding: 5px 20px;">
+			<a href="#" id="add-project" class="button grey">New Project</a>
+		</div>
+	</li>
+
+
+
+	<li class="active"><a href="#">Friends</a>
+		<ul>
+			<li><a href="#">Some Friend</a></li>
+			<li><a href="#">Some Cousin</a></li>
+			<li><a href="#">Some Project Manager</a></li>
+			<li><a href="#">Some Other Dude</a></li>
+		</ul>
+	</li>
+</ul>

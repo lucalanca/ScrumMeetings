@@ -1,0 +1,4 @@
+<section id="main">
+	<h1><%= @project.get('name') %></h1>
+	<h2><a href="<%= @project.get('github_repository') %>">Github</a></h2>
+</section>
